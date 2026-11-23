@@ -1,0 +1,1650 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五一爆料网轻量版_视频爆料社区|真实影像与现场记录</title>
+<meta name="description" content="五一爆料网轻量版官方网站，聚焦现场影像、真实爆料与城市记录视频，为创作者与观众搭建高品质内容社区，坚持原创、正版、高清的内容生态。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b1f2a'/%3E%3Cpath d='M24 18l24 14-24 14z' fill='%23ff4d3d'/%3E%3C/svg%3E">
+<style>
+:root{
+  --wy-bg:#0e1015;
+  --wy-panel:#171a22;
+  --wy-panel-2:#1e222c;
+  --wy-line:#2b3040;
+  --wy-text:#e9ecf2;
+  --wy-sub:#9aa3b5;
+  --wy-red:#ff4d3d;
+  --wy-red-soft:rgba(255,77,61,.12);
+  --wy-cyan:#43d9c0;
+  --wy-ff:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+  --wy-sticky:118px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--wy-ff);
+  background:var(--wy-bg);
+  color:var(--wy-text);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.wy-container{width:min(1180px,92vw);margin:0 auto}
+
+/* ===== 公告条 + 页头吸顶 ===== */
+.wy-topwrap{
+  position:sticky;top:0;z-index:90;
+  backdrop-filter:blur(10px);
+  background:rgba(14,16,21,.94);
+  border-bottom:1px solid var(--wy-line);
+}
+.wy-announce{
+  background:linear-gradient(90deg,#ff4d3d,#ff7a45 60%,#ffb03a);
+  color:#1a1005;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.2px;
+}
+.wy-announce-inner{
+  display:flex;align-items:center;gap:14px;
+  padding:7px 0;
+  white-space:nowrap;overflow:hidden;
+}
+.wy-announce-tag{
+  flex:0 0 auto;
+  background:#1a1005;color:#ffb03a;
+  font-size:11px;padding:2px 8px;border-radius:3px;letter-spacing:1px;
+}
+.wy-announce-marquee{
+  display:flex;gap:40px;overflow:hidden;
+  mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
+}
+.wy-announce-marquee span{animation:wy-slide 26s linear infinite;flex:0 0 auto}
+@keyframes wy-slide{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.wy-announce-link{margin-left:auto;flex:0 0 auto;font-weight:700;border-bottom:1.5px solid #1a1005;padding-bottom:1px}
+
+.wy-header{position:relative}
+.wy-header-inner{
+  display:flex;align-items:center;gap:26px;
+  padding:14px 0;
+}
+.wy-brand{display:flex;align-items:center;gap:11px;flex:0 0 auto}
+.wy-brand-mark{
+  width:40px;height:40px;border-radius:10px;
+  background:linear-gradient(135deg,#ff4d3d,#ff8a3d);
+  display:grid;place-items:center;
+  box-shadow:0 4px 16px rgba(255,77,61,.35);
+}
+.wy-brand-mark svg{width:20px;height:20px}
+.wy-brand-text b{display:block;font-size:17px;letter-spacing:.5px;line-height:1.3}
+.wy-brand-text small{display:block;font-size:11px;color:var(--wy-sub);letter-spacing:2px}
+.wy-nav{display:flex;gap:22px;margin-left:6px;flex:1}
+.wy-nav a{
+  font-size:14px;color:var(--wy-sub);
+  padding:4px 0;position:relative;transition:color .2s;
+}
+.wy-nav a:hover{color:#fff}
+.wy-nav a::after{
+  content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;
+  background:var(--wy-red);transition:width .25s;
+}
+.wy-nav a:hover::after{width:100%}
+.wy-header-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.wy-search{
+  display:flex;align-items:center;gap:8px;
+  background:var(--wy-panel-2);
+  border:1px solid var(--wy-line);
+  border-radius:8px;
+  padding:7px 10px;
+  width:210px;transition:border-color .2s,box-shadow .2s;
+}
+.wy-search:focus-within{border-color:var(--wy-red);box-shadow:0 0 0 3px var(--wy-red-soft)}
+.wy-search svg{width:15px;height:15px;flex:0 0 auto;stroke:var(--wy-sub)}
+.wy-search input{
+  background:none;border:none;outline:none;color:var(--wy-text);
+  font-size:13px;width:100%;
+}
+.wy-search input::placeholder{color:#5d6577}
+.wy-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  border-radius:8px;font-size:14px;font-weight:600;
+  padding:9px 17px;transition:transform .18s,background .18s,box-shadow .18s;
+  white-space:nowrap;
+}
+.wy-btn:active{transform:scale(.97)}
+.wy-btn-primary{background:var(--wy-red);color:#fff;box-shadow:0 4px 14px rgba(255,77,61,.3)}
+.wy-btn-primary:hover{background:#ff6355}
+.wy-btn-ghost{border:1px solid var(--wy-line);color:var(--wy-text);background:var(--wy-panel-2)}
+.wy-btn-ghost:hover{border-color:#4b5468}
+.wy-nav-toggle{display:none;width:40px;height:40px;border-radius:8px;border:1px solid var(--wy-line);align-items:center;justify-content:center}
+.wy-nav-toggle span{display:block;width:18px;height:2px;background:#fff;position:relative}
+.wy-nav-toggle span::before,.wy-nav-toggle span::after{
+  content:"";position:absolute;left:0;width:18px;height:2px;background:#fff;
+}
+.wy-nav-toggle span::before{top:-6px}
+.wy-nav-toggle span::after{top:6px}
+.wy-search-feedback{
+  display:none;font-size:12px;color:var(--wy-cyan);
+  padding:6px 4px 0;
+}
+.wy-search-feedback.show{display:block}
+
+/* ===== 首屏：全幅主视觉背景+浮动文字 ===== */
+.wy-hero{
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--wy-line);
+}
+.wy-hero-bg{position:absolute;inset:0;z-index:0}
+.wy-hero-bg svg{width:100%;height:100%;object-fit:cover}
+.wy-hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(14,16,21,.96) 8%,rgba(14,16,21,.78) 46%,rgba(14,16,21,.28) 100%);
+}
+.wy-hero-inner{position:relative;z-index:2;padding:64px 0 58px}
+.wy-hero-copy{max-width:600px}
+.wy-hero-kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:3px;color:var(--wy-red);
+  border:1px solid rgba(255,77,61,.4);
+  padding:4px 12px;border-radius:99px;margin-bottom:20px;
+  background:rgba(255,77,61,.08);
+}
+.wy-hero-kicker i{width:6px;height:6px;border-radius:50%;background:var(--wy-red);animation:wy-pulse 1.6s infinite}
+@keyframes wy-pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.wy-hero h1{
+  font-size:clamp(34px,5vw,58px);
+  line-height:1.14;letter-spacing:-.5px;font-weight:800;
+  margin-bottom:8px;
+}
+.wy-hero h1 .wy-accent{color:var(--wy-red)}
+.wy-hero-tagline{
+  font-size:clamp(15px,1.6vw,19px);
+  color:#c3cad8;margin-bottom:22px;font-weight:500;letter-spacing:.5px;
+}
+.wy-hero-intro{
+  font-size:14.5px;color:#a8b1c2;line-height:1.95;
+  margin-bottom:26px;max-width:560px;
+}
+.wy-hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:36px}
+.wy-hero-stats{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;background:var(--wy-line);
+  border:1px solid var(--wy-line);border-radius:10px;overflow:hidden;
+  max-width:560px;
+}
+.wy-hero-stat{background:rgba(23,26,34,.9);padding:14px 16px}
+.wy-hero-stat b{
+  display:block;font-size:24px;font-weight:800;color:#fff;letter-spacing:-.5px;
+  font-variant-numeric:tabular-nums;
+}
+.wy-hero-stat b em{font-style:normal;font-size:13px;color:var(--wy-red);margin-left:2px}
+.wy-hero-stat span{font-size:12px;color:var(--wy-sub);letter-spacing:.5px}
+
+/* ===== 通用区块 ===== */
+.wy-section{padding:62px 0;border-bottom:1px solid var(--wy-line)}
+.wy-section:last-of-type{border-bottom:none}
+.wy-sec-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:20px;margin-bottom:32px;flex-wrap:wrap;
+}
+.wy-sec-head-left{max-width:640px}
+.wy-sec-kicker{
+  font-size:12px;letter-spacing:3px;color:var(--wy-red);
+  font-weight:700;margin-bottom:8px;text-transform:uppercase;
+}
+.wy-sec-head h2{
+  font-size:clamp(23px,2.6vw,31px);font-weight:800;letter-spacing:-.3px;line-height:1.3;
+}
+.wy-sec-head h2 .wy-accent{color:var(--wy-red)}
+.wy-sec-desc{font-size:14px;color:var(--wy-sub);margin-top:10px;line-height:1.85}
+.wy-sec-more{
+  font-size:13px;color:var(--wy-sub);display:inline-flex;align-items:center;gap:5px;
+  border:1px solid var(--wy-line);padding:7px 14px;border-radius:99px;
+  transition:all .2s;white-space:nowrap;
+}
+.wy-sec-more:hover{color:#fff;border-color:var(--wy-red);background:var(--wy-red-soft)}
+
+/* ===== 焦点内容 ===== */
+.wy-focus-grid{
+  display:grid;grid-template-columns:1.25fr 1fr;gap:26px;
+}
+.wy-focus-main{
+  border:1px solid var(--wy-line);border-radius:14px;overflow:hidden;
+  background:var(--wy-panel);
+  transition:transform .25s,border-color .25s;
+}
+.wy-focus-main:hover{transform:translateY(-4px);border-color:rgba(255,77,61,.5)}
+.wy-focus-cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:#10131a}
+.wy-focus-cover svg{width:100%;height:100%}
+.wy-play-badge{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:54px;height:54px;border-radius:50%;
+  background:rgba(255,77,61,.92);
+  display:grid;place-items:center;
+  box-shadow:0 0 0 8px rgba(255,77,61,.18);
+}
+.wy-play-badge svg{width:20px;height:20px}
+.wy-focus-badge{
+  position:absolute;top:12px;left:12px;
+  background:var(--wy-red);color:#fff;font-size:11px;font-weight:700;
+  padding:3px 9px;border-radius:4px;letter-spacing:1px;
+}
+.wy-focus-body{padding:20px 22px 22px}
+.wy-focus-body h3{font-size:19px;font-weight:700;line-height:1.5;margin-bottom:9px}
+.wy-focus-body p{font-size:13.5px;color:var(--wy-sub);line-height:1.85;margin-bottom:14px}
+.wy-meta-row{display:flex;align-items:center;gap:14px;font-size:12px;color:#76809a;flex-wrap:wrap}
+.wy-meta-row .wy-tag{
+  background:var(--wy-panel-2);color:var(--wy-cyan);
+  padding:2px 8px;border-radius:4px;font-size:11px;
+}
+.wy-focus-side{display:flex;flex-direction:column;gap:14px}
+.wy-focus-item{
+  display:flex;gap:14px;padding:14px;
+  border:1px solid var(--wy-line);border-radius:12px;
+  background:var(--wy-panel);
+  transition:border-color .2s,background .2s;
+}
+.wy-focus-item:hover{border-color:#3d455a;background:var(--wy-panel-2)}
+.wy-focus-thumb{
+  flex:0 0 96px;width:96px;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#10131a;
+}
+.wy-focus-thumb svg{width:100%;height:100%}
+.wy-focus-item h4{font-size:14.5px;font-weight:700;line-height:1.5;margin-bottom:5px}
+.wy-focus-item p{font-size:12.5px;color:var(--wy-sub);line-height:1.7;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* ===== 视频流：单列图文列表 ===== */
+.wy-video-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--wy-line);border-radius:14px;overflow:hidden;background:var(--wy-panel)}
+.wy-video-row{
+  display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:start;
+  padding:20px 22px;border-bottom:1px solid var(--wy-line);
+  transition:background .2s;
+}
+.wy-video-row:last-child{border-bottom:none}
+.wy-video-row:hover{background:var(--wy-panel-2)}
+.wy-video-index{
+  font-size:22px;font-weight:800;color:#3a4256;
+  font-variant-numeric:tabular-nums;line-height:1.2;letter-spacing:-1px;
+  padding-top:2px;
+}
+.wy-video-main h3{font-size:16px;font-weight:700;line-height:1.5;margin-bottom:7px}
+.wy-video-main h3 .wy-vtag{
+  display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.5px;
+  color:var(--wy-red);border:1px solid rgba(255,77,61,.45);
+  padding:0 6px;border-radius:3px;margin-right:7px;vertical-align:2px;
+}
+.wy-video-main p{font-size:13px;color:var(--wy-sub);line-height:1.8;margin-bottom:9px;max-width:640px}
+.wy-video-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:9px}
+.wy-video-tags span{
+  font-size:11px;color:#8f9ab2;background:#12151d;
+  border:1px solid var(--wy-line);padding:1px 8px;border-radius:99px;
+}
+.wy-video-statline{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#76809a}
+.wy-video-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.wy-act{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12.5px;color:var(--wy-sub);
+  border:1px solid var(--wy-line);border-radius:99px;
+  padding:5px 12px;transition:all .18s;white-space:nowrap;
+}
+.wy-act:hover{color:#fff;border-color:#4b5468}
+.wy-act svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8}
+.wy-act.wy-liked{color:var(--wy-red);border-color:rgba(255,77,61,.5);background:var(--wy-red-soft)}
+.wy-act.wy-liked svg{fill:var(--wy-red);stroke:var(--wy-red)}
+.wy-act.wy-saved{color:var(--wy-cyan);border-color:rgba(67,217,192,.45);background:rgba(67,217,192,.08)}
+.wy-act.wy-saved svg{fill:var(--wy-cyan);stroke:var(--wy-cyan)}
+
+/* ===== 专题企划 ===== */
+.wy-topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.wy-topic-card{
+  border:1px solid var(--wy-line);border-radius:14px;overflow:hidden;
+  background:var(--wy-panel);display:flex;flex-direction:column;
+  transition:transform .22s,border-color .22s;
+}
+.wy-topic-card:hover{transform:translateY(-4px);border-color:#3d455a}
+.wy-topic-cover{aspect-ratio:16/9;overflow:hidden;background:#10131a;position:relative}
+.wy-topic-cover svg{width:100%;height:100%}
+.wy-topic-state{
+  position:absolute;right:10px;top:10px;
+  font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;
+}
+.wy-state-live{background:var(--wy-red);color:#fff}
+.wy-state-soon{background:#1a1f2b;color:var(--wy-cyan);border:1px solid rgba(67,217,192,.4)}
+.wy-topic-body{padding:17px 18px 19px;display:flex;flex-direction:column;flex:1}
+.wy-topic-body h3{font-size:16px;font-weight:700;line-height:1.5;margin-bottom:7px}
+.wy-topic-body p{font-size:12.5px;color:var(--wy-sub);line-height:1.75;margin-bottom:13px}
+.wy-topic-items{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.wy-topic-items li{
+  font-size:12.5px;color:#aeb7c9;padding-left:16px;position:relative;line-height:1.7;
+}
+.wy-topic-items li::before{
+  content:"";position:absolute;left:0;top:9px;width:6px;height:6px;
+  border-radius:2px;background:var(--wy-red);opacity:.7;
+}
+.wy-topic-foot{margin-top:auto;font-size:12px;color:#66708a;display:flex;justify-content:space-between;align-items:center}
+
+/* ===== 关键词解析长文 ===== */
+.wy-analysis{
+  background:linear-gradient(180deg,#12151d,#0e1015);
+  border:1px solid var(--wy-line);border-radius:16px;
+  padding:38px 40px;position:relative;overflow:hidden;
+}
+.wy-analysis::before{
+  content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;
+  border-radius:50%;background:radial-gradient(circle,rgba(255,77,61,.16),transparent 70%);
+}
+.wy-analysis-head{position:relative;z-index:1;margin-bottom:26px}
+.wy-analysis-head h2{font-size:clamp(22px,2.4vw,28px);font-weight:800;line-height:1.35;margin-bottom:10px}
+.wy-analysis-head p{font-size:14px;color:var(--wy-sub);line-height:1.9;max-width:720px}
+.wy-analysis-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 40px;position:relative;z-index:1}
+.wy-analysis-block h3{
+  font-size:16px;font-weight:700;color:#fff;margin-bottom:9px;
+  padding-left:12px;border-left:3px solid var(--wy-red);line-height:1.4;
+}
+.wy-analysis-block p{font-size:13.5px;color:#a4adc0;line-height:1.95;margin-bottom:12px}
+.wy-analysis-block p b{color:#fff;font-weight:600}
+
+/* ===== 作者矩阵：双列简介 ===== */
+.wy-author-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.wy-author-card{
+  display:flex;gap:16px;padding:22px;
+  border:1px solid var(--wy-line);border-radius:14px;background:var(--wy-panel);
+  transition:border-color .2s,background .2s;
+}
+.wy-author-card:hover{border-color:#3d455a;background:var(--wy-panel-2)}
+.wy-avatar{
+  flex:0 0 62px;width:62px;height:62px;border-radius:50%;
+  display:grid;place-items:center;font-size:22px;font-weight:800;color:#fff;
+  letter-spacing:-.5px;
+}
+.wy-author-info{min-width:0}
+.wy-author-info h3{font-size:16px;font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.wy-author-role{
+  font-size:11px;font-weight:600;color:var(--wy-cyan);
+  border:1px solid rgba(67,217,192,.35);padding:0 7px;border-radius:99px;letter-spacing:.5px;
+}
+.wy-author-field{font-size:12.5px;color:var(--wy-red);margin-bottom:7px;font-weight:600}
+.wy-author-info p{font-size:13px;color:var(--wy-sub);line-height:1.8;margin-bottom:10px}
+.wy-author-nums{display:flex;gap:16px;font-size:12px;color:#76809a;margin-bottom:10px}
+.wy-author-nums b{color:#dfe4ee;font-weight:700;font-variant-numeric:tabular-nums}
+.wy-author-more{
+  font-size:12.5px;color:var(--wy-sub);display:inline-flex;align-items:center;gap:4px;
+  border-bottom:1px dashed #3d455a;padding-bottom:1px;transition:color .2s;
+}
+.wy-author-more:hover{color:var(--wy-red)}
+
+/* ===== 评论区：评分摘要 + 双列短评 ===== */
+.wy-review-wrap{display:grid;grid-template-columns:300px 1fr;gap:28px}
+.wy-review-score{
+  border:1px solid var(--wy-line);border-radius:14px;background:var(--wy-panel);
+  padding:26px 24px;display:flex;flex-direction:column;gap:14px;
+}
+.wy-review-score b{font-size:52px;line-height:1;font-weight:800;letter-spacing:-2px;color:#fff}
+.wy-review-score b em{font-style:normal;font-size:16px;color:var(--wy-sub);font-weight:500;letter-spacing:0}
+.wy-stars{display:flex;gap:3px}
+.wy-stars span{color:var(--wy-red);font-size:15px;letter-spacing:1px}
+.wy-review-score p{font-size:12.5px;color:var(--wy-sub);line-height:1.8}
+.wy-score-bars{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.wy-score-bar{display:flex;align-items:center;gap:9px;font-size:11.5px;color:#76809a}
+.wy-score-bar i{font-style:normal;flex:0 0 38px}
+.wy-score-bar u{
+  flex:1;height:6px;border-radius:99px;background:#12151d;overflow:hidden;text-decoration:none;
+}
+.wy-score-bar u s{display:block;height:100%;background:linear-gradient(90deg,var(--wy-red),#ff8a3d);text-decoration:none}
+.wy-review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.wy-review-card{
+  border:1px solid var(--wy-line);border-radius:12px;background:var(--wy-panel);
+  padding:17px 18px;transition:border-color .2s;
+}
+.wy-review-card:hover{border-color:#3d455a}
+.wy-review-card-head{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.wy-review-avatar{
+  width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+  font-size:12px;font-weight:800;color:#fff;flex:0 0 auto;
+}
+.wy-review-card-head b{font-size:13px;font-weight:700}
+.wy-review-card-head small{font-size:11px;color:#5d6577;margin-left:auto}
+.wy-review-card p{font-size:13px;color:#a4adc0;line-height:1.85}
+.wy-review-card .wy-review-stars{font-size:11.5px;color:var(--wy-red);letter-spacing:1px;margin-bottom:6px}
+
+/* ===== 企业动态 ===== */
+.wy-news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.wy-news-card{
+  border:1px solid var(--wy-line);border-radius:12px;background:var(--wy-panel);
+  padding:22px;transition:transform .2s,border-color .2s;
+}
+.wy-news-card:hover{transform:translateY(-3px);border-color:#3d455a}
+.wy-news-date{font-size:12px;color:var(--wy-red);font-weight:700;letter-spacing:1px;margin-bottom:9px;font-variant-numeric:tabular-nums}
+.wy-news-card h3{font-size:15px;font-weight:700;line-height:1.55;margin-bottom:9px}
+.wy-news-card p{font-size:12.5px;color:var(--wy-sub);line-height:1.8}
+
+/* ===== FAQ ===== */
+.wy-faq-list{display:flex;flex-direction:column;gap:11px;max-width:900px}
+.wy-faq-list details{
+  border:1px solid var(--wy-line);border-radius:11px;background:var(--wy-panel);
+  padding:0;overflow:hidden;
+}
+.wy-faq-list summary{
+  list-style:none;cursor:pointer;padding:16px 20px;
+  font-size:14.5px;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:14px;
+  transition:color .2s;
+}
+.wy-faq-list summary::-webkit-details-marker{display:none}
+.wy-faq-list summary:hover{color:var(--wy-red)}
+.wy-faq-list summary::after{content:"+";font-size:19px;color:var(--wy-sub);font-weight:400;flex:0 0 auto;transition:transform .2s}
+.wy-faq-list details[open] summary::after{content:"−";color:var(--wy-red)}
+.wy-faq-list details p{
+  padding:0 20px 18px;font-size:13.5px;color:var(--wy-sub);line-height:1.9;
+}
+
+/* ===== 合作与投稿 ===== */
+.wy-partner-submit{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:24px;
+}
+.wy-partner-card,.wy-submit-card{
+  border:1px solid var(--wy-line);border-radius:14px;background:var(--wy-panel);padding:28px;
+}
+.wy-partner-card h2,.wy-submit-card h2{font-size:19px;font-weight:800;margin-bottom:8px}
+.wy-partner-card > p,.wy-submit-card > p{font-size:13px;color:var(--wy-sub);line-height:1.85;margin-bottom:18px}
+.wy-partner-logos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.wy-partner-logo{
+  display:flex;align-items:center;gap:10px;
+  border:1px solid var(--wy-line);border-radius:9px;padding:11px 13px;
+  font-size:12.5px;color:#aeb7c9;background:#12151d;transition:border-color .2s,color .2s;
+}
+.wy-partner-logo:hover{border-color:rgba(255,77,61,.45);color:#fff}
+.wy-partner-logo i{
+  width:26px;height:26px;border-radius:7px;display:grid;place-items:center;
+  font-size:12px;font-weight:800;color:#fff;font-style:normal;flex:0 0 auto;
+}
+.wy-submit-form{display:flex;flex-direction:column;gap:11px}
+.wy-submit-form input,.wy-submit-form textarea{
+  width:100%;background:#12151d;border:1px solid var(--wy-line);
+  border-radius:8px;padding:10px 13px;color:var(--wy-text);font-size:13px;
+  font-family:inherit;outline:none;resize:vertical;transition:border-color .2s;
+}
+.wy-submit-form input:focus,.wy-submit-form textarea:focus{border-color:var(--wy-red)}
+.wy-submit-form textarea{min-height:82px}
+.wy-submit-note{font-size:11.5px;color:#5d6577;line-height:1.7}
+
+/* ===== 页脚 ===== */
+.wy-footer{background:#0a0c10;border-top:1px solid var(--wy-line);padding:52px 0 26px}
+.wy-footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;margin-bottom:38px}
+.wy-footer-brand p{font-size:13px;color:var(--wy-sub);line-height:1.9;margin:14px 0 16px;max-width:320px}
+.wy-footer-social{display:flex;gap:9px}
+.wy-footer-social span{
+  width:32px;height:32px;border-radius:8px;border:1px solid var(--wy-line);
+  display:grid;place-items:center;font-size:12px;color:var(--wy-sub);
+  transition:all .2s;
+}
+.wy-footer-social span:hover{color:#fff;border-color:var(--wy-red);background:var(--wy-red-soft)}
+.wy-footer-col h4{font-size:13px;font-weight:700;color:#fff;margin-bottom:14px;letter-spacing:1px}
+.wy-footer-col a{display:block;font-size:12.5px;color:var(--wy-sub);padding:4px 0;transition:color .2s}
+.wy-footer-col a:hover{color:var(--wy-red)}
+.wy-footer-bottom{
+  border-top:1px solid var(--wy-line);padding-top:20px;
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-size:12px;color:#5d6577;line-height:1.8;
+}
+
+/* ===== 弹窗 / Toast / 回到顶部 ===== */
+.wy-modal-mask{
+  position:fixed;inset:0;z-index:200;display:none;
+  background:rgba(4,6,10,.76);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.wy-modal-mask.show{display:flex}
+.wy-modal{
+  width:min(480px,100%);background:var(--wy-panel);
+  border:1px solid var(--wy-line);border-radius:16px;padding:26px;
+  box-shadow:0 24px 60px rgba(0,0,0,.6);
+  animation:wy-pop .22s ease-out;
+}
+@keyframes wy-pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.wy-modal h3{font-size:17px;font-weight:800;margin-bottom:12px}
+.wy-modal p{font-size:13.5px;color:var(--wy-sub);line-height:1.9;margin-bottom:18px}
+.wy-modal-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.wy-modal-close{
+  position:absolute;right:16px;top:14px;font-size:20px;color:var(--wy-sub);
+}
+.wy-toast{
+  position:fixed;left:50%;bottom:38px;transform:translate(-50%,20px);
+  background:#1e222c;border:1px solid var(--wy-line);
+  color:#fff;font-size:13px;padding:11px 20px;border-radius:99px;
+  box-shadow:0 12px 32px rgba(0,0,0,.5);
+  opacity:0;pointer-events:none;transition:all .28s;z-index:300;
+  display:flex;align-items:center;gap:8px;
+}
+.wy-toast.show{opacity:1;transform:translate(-50%,0)}
+.wy-toast i{width:7px;height:7px;border-radius:50%;background:var(--wy-cyan);font-style:normal}
+.wy-backtop{
+  position:fixed;right:22px;bottom:26px;z-index:120;
+  width:42px;height:42px;border-radius:11px;
+  background:var(--wy-panel-2);border:1px solid var(--wy-line);
+  display:grid;place-items:center;
+  opacity:0;pointer-events:none;transition:all .25s;
+}
+.wy-backtop.show{opacity:1;pointer-events:auto}
+.wy-backtop:hover{border-color:var(--wy-red);background:var(--wy-red-soft)}
+.wy-backtop svg{width:17px;height:17px;stroke:var(--wy-text);fill:none;stroke-width:2}
+
+/* ===== 响应式 ===== */
+@media (max-width:1024px){
+  .wy-focus-grid{grid-template-columns:1fr}
+  .wy-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .wy-news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .wy-review-wrap{grid-template-columns:1fr}
+  .wy-partner-submit{grid-template-columns:1fr}
+  .wy-footer-top{grid-template-columns:1fr 1fr}
+  .wy-analysis-cols{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .wy-nav{
+    display:none;position:absolute;left:0;right:0;top:100%;
+    flex-direction:column;gap:0;
+    background:#12151d;border-bottom:1px solid var(--wy-line);
+    padding:8px 0;
+  }
+  .wy-nav.open{display:flex}
+  .wy-nav a{padding:12px 6vw;border-bottom:1px solid #1c202b}
+  .wy-nav-toggle{display:flex}
+  .wy-header-inner{gap:14px}
+  .wy-search{width:160px}
+  .wy-hero-inner{padding:44px 0 40px}
+  .wy-hero-bg::after{background:linear-gradient(180deg,rgba(14,16,21,.94) 20%,rgba(14,16,21,.76) 100%)}
+  .wy-video-row{grid-template-columns:1fr;gap:12px}
+  .wy-video-index{font-size:15px;color:var(--wy-red)}
+  .wy-video-actions{flex-direction:row;flex-wrap:wrap}
+  .wy-author-grid{grid-template-columns:1fr}
+  .wy-review-grid{grid-template-columns:1fr}
+  .wy-section{padding:46px 0}
+  .wy-analysis{padding:26px 22px}
+}
+@media (max-width:600px){
+  .wy-topic-grid,.wy-news-grid,.wy-footer-top,.wy-partner-logos{grid-template-columns:1fr}
+  .wy-hero-stats{grid-template-columns:1fr;max-width:none}
+  .wy-header-actions .wy-btn-ghost{display:none}
+  .wy-search{width:100%}
+  .wy-header-inner{flex-wrap:wrap}
+  .wy-brand{flex:1}
+  .wy-focus-side{display:none}
+  .wy-author-card{flex-direction:column}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- ===== S1 公告条 + 页头 ===== -->
+<div class="wy-topwrap">
+  <div class="wy-announce">
+    <div class="wy-container wy-announce-inner">
+      <span class="wy-announce-tag">官方发布</span>
+      <div class="wy-announce-marquee">
+        <span>五一爆料网轻量版「现场·第一帧」冬季征稿开启，面向全国创作者征集原创影像 · 11 月 22 日</span>
+        <span>轻量版客户端 3.2 更新：支持 4K 高清下载与分镜标记 · 新增 12 个城市投稿入口</span>
+      </div>
+      <a class="wy-announce-link" href="#wy-submit">立即参与</a>
+    </div>
+  </div>
+  <header class="wy-header">
+    <div class="wy-container wy-header-inner">
+      <a class="wy-brand" href="#wy-hero">
+        <span class="wy-brand-mark">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" fill="#fff"/></svg>
+        </span>
+        <span class="wy-brand-text">
+          <b>五一爆料网轻量版</b>
+          <small>官网 · VIDEO COMMUNITY</small>
+        </span>
+      </a>
+      <nav class="wy-nav" id="wy-nav">
+        <a href="#wy-focus">焦点影像</a>
+        <a href="#wy-videos">视频流</a>
+        <a href="#wy-topics">专题企划</a>
+        <a href="#wy-analysis">关键词解析</a>
+        <a href="#wy-authors">创作者</a>
+        <a href="#wy-reviews">口碑</a>
+        <a href="#wy-faq">帮助</a>
+      </nav>
+      <div class="wy-header-actions">
+        <div class="wy-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input type="search" id="wy-search-input" placeholder="搜索爆料、城市、创作者" aria-label="站内搜索">
+        </div>
+        <button class="wy-btn wy-btn-ghost" id="wy-upload-btn">上传作品</button>
+        <button class="wy-nav-toggle" id="wy-nav-toggle" aria-label="展开导航"><span></span></button>
+      </div>
+    </div>
+    <div class="wy-container"><div class="wy-search-feedback" id="wy-search-feedback"></div></div>
+  </header>
+</div>
+
+<!-- ===== S2 品牌首屏 ===== -->
+<section class="wy-hero" id="wy-hero">
+  <div class="wy-hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="wyHeroSky" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#0b0e15"/>
+          <stop offset=".5" stop-color="#1a2030"/>
+          <stop offset="1" stop-color="#2a1a1a"/>
+        </linearGradient>
+        <linearGradient id="wyHeroGlow" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ff4d3d" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#ffb03a" stop-opacity=".08"/>
+        </linearGradient>
+        <linearGradient id="wyHeroCity" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2e3648"/>
+          <stop offset="1" stop-color="#111520"/>
+        </linearGradient>
+      </defs>
+      <rect width="1440" height="720" fill="url(#wyHeroSky)"/>
+      <circle cx="1150" cy="190" r="230" fill="url(#wyHeroGlow)"/>
+      <circle cx="1150" cy="190" r="96" fill="#ff6a4d" opacity=".55"/>
+      <circle cx="1150" cy="190" r="140" fill="none" stroke="#ff8a5c" stroke-opacity=".25" stroke-width="2"/>
+      <g fill="url(#wyHeroCity)" opacity=".95">
+        <rect x="760" y="430" width="86" height="290" rx="4"/>
+        <rect x="862" y="356" width="70" height="364" rx="4"/>
+        <rect x="948" y="470" width="96" height="250" rx="4"/>
+        <rect x="1060" y="300" width="64" height="420" rx="4"/>
+        <rect x="1140" y="404" width="104" height="316" rx="4"/>
+        <rect x="1260" y="472" width="82" height="248" rx="4"/>
+        <rect x="1358" y="380" width="82" height="340" rx="4"/>
+      </g>
+      <g fill="#ffb03a" opacity=".55">
+        <rect x="780" y="470" width="8" height="8"/><rect x="802" y="470" width="8" height="8"/><rect x="824" y="492" width="8" height="8"/>
+        <rect x="878" y="396" width="8" height="8"/><rect x="900" y="418" width="8" height="8"/><rect x="878" y="440" width="8" height="8"/>
+        <rect x="1076" y="348" width="8" height="8"/><rect x="1098" y="370" width="8" height="8"/><rect x="1076" y="392" width="8" height="8"/>
+        <rect x="1160" y="452" width="8" height="8"/><rect x="1186" y="474" width="8" height="8"/><rect x="1212" y="452" width="8" height="8"/>
+      </g>
+      <g stroke="#43d9c0" stroke-opacity=".22" stroke-width="1.5" fill="none">
+        <path d="M0 560 Q 360 500 720 560 T 1440 540"/>
+        <path d="M0 620 Q 400 570 800 620 T 1440 600"/>
+      </g>
+      <g stroke="#ff4d3d" stroke-width="2" opacity=".9">
+        <path d="M28 96 H 168" stroke-linecap="round"/>
+        <path d="M28 110 H 116" stroke-linecap="round" opacity=".5"/>
+      </g>
+      <circle cx="300" cy="150" r="2.5" fill="#43d9c0" opacity=".8"/>
+      <circle cx="520" cy="90" r="2" fill="#ffb03a" opacity=".7"/>
+      <circle cx="660" cy="210" r="2" fill="#ff4d3d" opacity=".7"/>
+    </svg>
+  </div>
+  <div class="wy-container wy-hero-inner">
+    <div class="wy-hero-copy">
+      <span class="wy-hero-kicker"><i></i>休闲娱乐 · 视频爆料社区官网</span>
+      <h1>五一爆料网<span class="wy-accent">轻量版</span></h1>
+      <p class="wy-hero-tagline">把现场交给镜头，把真实交给时间。</p>
+      <p class="wy-hero-intro">
+        五一爆料网轻量版是聚焦现场影像与真实记录的视频社区官方网站。我们以“轻量、快速、可信”为产品理念，为创作者提供高清上传、分镜标记与正版保护能力，为观众提供可追溯来源的原创内容。无论是节日现场、城市街角还是日常突发事件的第一帧，这里都为每一段影像保留完整的叙事空间，并持续深耕休闲娱乐垂类的视频内容生态。
+      </p>
+      <div class="wy-hero-actions">
+        <a class="wy-btn wy-btn-primary" href="#wy-videos">浏览视频流</a>
+        <a class="wy-btn wy-btn-ghost" href="#wy-submit">投稿爆料</a>
+        <button class="wy-btn wy-btn-ghost" id="wy-share-hero">分享社区</button>
+      </div>
+      <div class="wy-hero-stats">
+        <div class="wy-hero-stat"><b data-wy-count="128600">0<em>+</em></b><span>原创视频作品</span></div>
+        <div class="wy-hero-stat"><b data-wy-count="43600">0<em>+</em></b><span>认证创作者</span></div>
+        <div class="wy-hero-stat"><b data-wy-count="97" data-wy-suffix="%">0<em></em></b><span>用户口碑好评率</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S3 焦点内容 ===== -->
+<section class="wy-section" id="wy-focus">
+  <div class="wy-container">
+    <div class="wy-sec-head">
+      <div class="wy-sec-head-left">
+        <div class="wy-sec-kicker">Focus / 今日焦点</div>
+        <h2>五一爆料网轻量版 <span class="wy-accent">焦点影像</span></h2>
+        <p class="wy-sec-desc">编辑团队每日从五一爆料网轻量版的海量原创投稿中，挑选最具现场感与公共价值的作品，作为官网首页重点推荐。</p>
+      </div>
+      <a class="wy-sec-more" href="#wy-videos">查看全部 →</a>
+    </div>
+
+    <div class="wy-focus-grid">
+      <article class="wy-focus-main">
+        <div class="wy-focus-cover">
+          <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="wyF1bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#131a26"/><stop offset="1" stop-color="#2a1a1f"/>
+              </linearGradient>
+              <linearGradient id="wyF1light" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffb03a"/><stop offset="1" stop-color="#ff4d3d"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="450" fill="url(#wyF1bg)"/>
+            <circle cx="600" cy="120" r="150" fill="#ff4d3d" opacity=".16"/>
+            <path d="M0 340 L200 260 L360 320 L540 220 L800 320 L800 450 L0 450Z" fill="#141a25"/>
+            <path d="M0 380 L260 320 L460 372 L700 300 L800 340 L800 450 L0 450Z" fill="#1c2433"/>
+            <g stroke="url(#wyF1light)" stroke-width="3" fill="none" stroke-linecap="round">
+              <path d="M120 300 Q 200 250 300 290"/>
+              <path d="M300 290 Q 400 230 520 270"/>
+            </g>
+            <g fill="#43d9c0" opacity=".8">
+              <circle cx="150" cy="160" r="3"/><circle cx="330" cy="120" r="2.5"/><circle cx="470" cy="180" r="3"/>
+            </g>
+            <rect x="52" y="60" width="120" height="6" rx="3" fill="#ff4d3d"/>
+            <rect x="52" y="78" width="74" height="6" rx="3" fill="#ff4d3d" opacity=".5"/>
+            <g fill="#e9ecf2" opacity=".82">
+              <rect x="52" y="112" width="210" height="9" rx="4"/>
+              <rect x="52" y="132" width="160" height="9" rx="4" opacity=".7"/>
+            </g>
+            <rect x="52" y="170" width="86" height="26" rx="13" fill="#ff4d3d" opacity=".9"/>
+            <text x="95" y="188" font-family="sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">现场直击</text>
+            <g opacity=".9">
+              <rect x="640" y="360" width="120" height="34" rx="17" fill="#0e1015" opacity=".7"/>
+              <circle cx="662" cy="377" r="8" fill="#ff4d3d"/>
+              <path d="M660 373l6 4-6 4z" fill="#fff"/>
+              <text x="680" y="381" font-family="sans-serif" font-size="12" fill="#e9ecf2">18.4万次</text>
+            </g>
+          </svg>
+          <span class="wy-focus-badge">编辑推荐</span>
+          <span class="wy-play-badge">
+            <svg viewBox="0 0 24 24"><path d="M9 6l10 6-10 6V6z" fill="#fff"/></svg>
+          </span>
+        </div>
+        <div class="wy-focus-body">
+          <h3>黄金周现场纪实：凌晨四点的城市出入口，一万个人的出发</h3>
+          <p>创作者用 11 分钟长镜头记录了假期首日清晨的交通枢纽，从排队人群的沉默到广播响起时的骚动，完整保留现场的时间质感。这是五一爆料网轻量版「现场·第一帧」企划的开篇之作，也是本季度最值得观看的原创纪实内容之一。</p>
+          <div class="wy-meta-row">
+            <span class="wy-tag">城市记录</span>
+            <span class="wy-tag">长镜头</span>
+            <span>创作者 · 林岸观察</span>
+            <span>11:24</span>
+            <span>2026-11-18</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="wy-focus-side">
+        <article class="wy-focus-item">
+          <div class="wy-focus-thumb">
+            <svg viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <rect width="160" height="90" fill="#1d2534"/>
+              <circle cx="118" cy="28" r="26" fill="#43d9c0" opacity=".18"/>
+              <path d="M0 66 L40 50 L78 64 L120 44 L160 60 L160 90 L0 90Z" fill="#0f1420"/>
+              <path d="M0 74 L52 62 L96 76 L160 58 L160 90 L0 90Z" fill="#232d40"/>
+              <circle cx="46" cy="34" r="9" fill="#ff4d3d" opacity=".8"/>
+            </svg>
+          </div>
+          <div>
+            <h4>菜市场的一天：摊主镜头里的城市烟火</h4>
+            <p>创作者把相机交给摊主，拍下 6 小时连续营业的真实日常，弹幕里最多的一句话是“这就是我家楼下”。</p>
+          </div>
+        </article>
+        <article class="wy-focus-item">
+          <div class="wy-focus-thumb">
+            <svg viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <rect width="160" height="90" fill="#241a1c"/>
+              <rect x="16" y="46" width="18" height="44" fill="#3a2729"/>
+              <rect x="42" y="32" width="22" height="58" fill="#4a3032"/>
+              <rect x="72" y="52" width="16" height="38" fill="#3a2729"/>
+              <rect x="96" y="24" width="24" height="66" fill="#5a3a3d"/>
+              <circle cx="132" cy="24" r="15" fill="#ffb03a" opacity=".55"/>
+            </svg>
+          </div>
+          <div>
+            <h4>假期首日高速服务区，12 个家庭的出发故事</h4>
+            <p>三机位跟拍同一服务区，从清晨到深夜，记录不同家庭对“出发”这两个字完全不同的理解。</p>
+          </div>
+        </article>
+        <article class="wy-focus-item">
+          <div class="wy-focus-thumb">
+            <svg viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <rect width="160" height="90" fill="#101a1c"/>
+              <path d="M0 60 Q 40 38 80 60 T 160 56 L160 90 L0 90Z" fill="#16303a"/>
+              <path d="M0 72 Q 46 54 92 72 T 160 68 L160 90 L0 90Z" fill="#1d4351"/>
+              <circle cx="122" cy="26" r="12" fill="#43d9c0" opacity=".7"/>
+              <path d="M0 46 H160" stroke="#43d9c0" stroke-opacity=".25"/>
+            </svg>
+          </div>
+          <div>
+            <h4>轻量版创作课：如何用手机拍出可上首页的现场</h4>
+            <p>官方编辑部拆解 5 个真实获奖作品，从机位、收音到剪辑节奏，逐步讲清一条现场视频的诞生过程。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S3 视频流（单列图文列表） ===== -->
+<section class="wy-section" id="wy-videos">
+  <div class="wy-container">
+    <div class="wy-sec-head">
+      <div class="wy-sec-head-left">
+        <div class="wy-sec-kicker">Video Stream / 热门视频</div>
+        <h2>正在播放的 <span class="wy-accent">真实影像</span></h2>
+        <p class="wy-sec-desc">全部为五一爆料网轻量版原创或已授权内容，支持高清播放与正版溯源。点赞、收藏与评论数据实时更新。</p>
+      </div>
+      <a class="wy-sec-more" href="#wy-topics">按专题浏览 →</a>
+    </div>
+
+    <div class="wy-video-list">
+      <article class="wy-video-row">
+        <div class="wy-video-index">01</div>
+        <div class="wy-video-main">
+          <h3><span class="wy-vtag">热门</span>凌晨三点的批发市场，他们把城市叫醒</h3>
+          <p>创作者用 4 天时间蹲守同一家批发市场，记录下卸货、议价、开档、收摊的完整循环。声音全部现场收音，没有配乐，却比任何配乐都更有力量。</p>
+          <div class="wy-video-tags"><span>日常记录</span><span>城市探索</span><span>现场收音</span></div>
+          <div class="wy-video-statline">
+            <span>创作者 · 老周不睡</span><span>播放 42.8 万</span><span>点赞 <b data-wy-likecount="8642">8642</b></span><span>收藏 3120</span>
+          </div>
+        </div>
+        <div class="wy-video-actions">
+          <button class="wy-act wy-like-btn" data-count="8642">
+            <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.6-7 9-7 9z"/></svg>
+            <span class="wy-act-num">8642</span>
+          </button>
+          <button class="wy-act wy-save-btn" aria-label="收藏视频">
+            <svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+            <span>收藏</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="wy-video-row">
+        <div class="wy-video-index">02</div>
+        <div class="wy-video-main">
+          <h3>一条街的七天：从小店到夜市，跟随镜头走过城市夜经济</h3>
+          <p>同一条街，七天七夜，固定机位与手持镜头交替记录。创作者说，这不是城市宣传片，是一个普通人对自己生活半径的完整注视。</p>
+          <div class="wy-video-tags"><span>在地文化</span><span>连续记录</span><span>夜经济</span></div>
+          <div class="wy-video-statline">
+            <span>创作者 · 城南一号机</span><span>播放 31.2 万</span><span>点赞 <b data-wy-likecount="6120">6120</b></span><span>收藏 2410</span>
+          </div>
+        </div>
+        <div class="wy-video-actions">
+          <button class="wy-act wy-like-btn" data-count="6120">
+            <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.6-7 9-7 9z"/></svg>
+            <span class="wy-act-num">6120</span>
+          </button>
+          <button class="wy-act wy-save-btn" aria-label="收藏视频">
+            <svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+            <span>收藏</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="wy-video-row">
+        <div class="wy-video-index">03</div>
+        <div class="wy-video-main">
+          <h3>深度测评：三款轻量版剪辑工具，谁更适合突发现场</h3>
+          <p>编辑部实测三款轻量剪辑工具的上手速度、导出画质与字幕识别准确率，给出明确结论：突发场景优先“快”，长片整理优先“稳”。</p>
+          <div class="wy-video-tags"><span>深度测评</span><span>实用技巧</span><span>官方出品</span></div>
+          <div class="wy-video-statline">
+            <span>创作者 · 轻量研究室</span><span>播放 26.5 万</span><span>点赞 <b data-wy-likecount="4980">4980</b></span><span>收藏 4130</span>
+          </div>
+        </div>
+        <div class="wy-video-actions">
+          <button class="wy-act wy-like-btn" data-count="4980">
+            <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.6-7 9-7 9z"/></svg>
+            <span class="wy-act-num">4980</span>
+          </button>
+          <button class="wy-act wy-save-btn" aria-label="收藏视频">
+            <svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+            <span>收藏</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="wy-video-row">
+        <div class="wy-video-index">04</div>
+        <div class="wy-video-main">
+          <h3>人物访谈：拍了 800 条现场视频后，他决定只发真实的</h3>
+          <p>从随手拍到职业记录者，这位创作者在访谈中谈到流量诱惑、素材伦理与“不剪辑的勇气”，也回应了观众最关心的“真实性如何证明”。</p>
+          <div class="wy-video-tags"><span>人物访谈</span><span>创作幕后</span><span>真实</span></div>
+          <div class="wy-video-statline">
+            <span>创作者 · 白描工作室</span><span>播放 19.7 万</span><span>点赞 <b data-wy-likecount="3760">3760</b></span><span>收藏 1890</span>
+          </div>
+        </div>
+        <div class="wy-video-actions">
+          <button class="wy-act wy-like-btn" data-count="3760">
+            <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.6-7 9-7 9z"/></svg>
+            <span class="wy-act-num">3760</span>
+          </button>
+          <button class="wy-act wy-save-btn" aria-label="收藏视频">
+            <svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+            <span>收藏</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="wy-video-row">
+        <div class="wy-video-index">05</div>
+        <div class="wy-video-main">
+          <h3>教程干货：现场突发时，5 个镜头语言让信息更清楚</h3>
+          <p>从环境铺垫、主体确认到关键信息特写，官方课程用 5 个真实案例讲解“如何在混乱里拍出可用的画面”，并附现场收音清单。</p>
+          <div class="wy-video-tags"><span>教程干货</span><span>镜头语言</span><span>新人必看</span></div>
+          <div class="wy-video-statline">
+            <span>创作者 · 五一爆料课堂</span><span>播放 15.3 万</span><span>点赞 <b data-wy-likecount="2890">2890</b></span><span>收藏 5240</span>
+          </div>
+        </div>
+        <div class="wy-video-actions">
+          <button class="wy-act wy-like-btn" data-count="2890">
+            <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.6-7 9-7 9z"/></svg>
+            <span class="wy-act-num">2890</span>
+          </button>
+          <button class="wy-act wy-save-btn" aria-label="收藏视频">
+            <svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+            <span>收藏</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="wy-video-row">
+        <div class="wy-video-index">06</div>
+        <div class="wy-video-main">
+          <h3>治愈影像：假期结束后的第一个工作日下午</h3>
+          <p>没有解说，没有剧情，只有窗边的光、翻页的声音和一杯慢慢冷掉的咖啡。创作者说，这是拍给所有“节后返工”的人的一条视频。</p>
+          <div class="wy-video-tags"><span>治愈影像</span><span>生活方式</span><span>环境声</span></div>
+          <div class="wy-video-statline">
+            <span>创作者 · 慢速折叠</span><span>播放 12.6 万</span><span>点赞 <b data-wy-likecount="2410">2410</b></span><span>收藏 2160</span>
+          </div>
+        </div>
+        <div class="wy-video-actions">
+          <button class="wy-act wy-like-btn" data-count="2410">
+            <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.6-7 9-7 9z"/></svg>
+            <span class="wy-act-num">2410</span>
+          </button>
+          <button class="wy-act wy-save-btn" aria-label="收藏视频">
+            <svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+            <span>收藏</span>
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S4 专题企划 ===== -->
+<section class="wy-section" id="wy-topics">
+  <div class="wy-container">
+    <div class="wy-sec-head">
+      <div class="wy-sec-head-left">
+        <div class="wy-sec-kicker">Projects / 专题企划</div>
+        <h2>五一爆料网轻量版 <span class="wy-accent">长期企划</span></h2>
+        <p class="wy-sec-desc">我们相信精品内容需要时间沉淀。以下企划持续运营，接受创作者报名与投稿，由官网编辑部统一策展与分发。</p>
+      </div>
+    </div>
+
+    <div class="wy-topic-grid">
+      <article class="wy-topic-card">
+        <div class="wy-topic-cover">
+          <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="225" fill="#131c22"/>
+            <circle cx="316" cy="52" r="70" fill="#43d9c0" opacity=".14"/>
+            <path d="M0 160 L90 118 L180 152 L280 100 L400 148 L400 225 L0 225Z" fill="#0f2730"/>
+            <path d="M0 186 L110 152 L230 190 L330 148 L400 176 L400 225 L0 225Z" fill="#16404c"/>
+            <g stroke="#43d9c0" stroke-width="2" fill="none" opacity=".7">
+              <path d="M36 74 H150"/><path d="M36 90 H112" stroke-opacity=".5"/>
+            </g>
+            <circle cx="66" cy="150" r="5" fill="#ff4d3d"/>
+          </svg>
+          <span class="wy-topic-state wy-state-live">进行中</span>
+        </div>
+        <div class="wy-topic-body">
+          <h3>「现场·第一帧」冬季影像征集</h3>
+          <p>面向所有创作者征集真实、有信息量的现场影像，重点鼓励未经过度剪辑的第一手记录。</p>
+          <ul class="wy-topic-items">
+            <li>已收录 1,286 条投稿，覆盖 46 座城市</li>
+            <li>每周评选 3 条首页推荐，官网公示</li>
+            <li>入选作品享高清版权保护与分成计划</li>
+          </ul>
+          <div class="wy-topic-foot"><span>更新至 11-22</span><span>优秀作品 36</span></div>
+        </div>
+      </article>
+
+      <article class="wy-topic-card">
+        <div class="wy-topic-cover">
+          <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="225" fill="#221a15"/>
+            <circle cx="90" cy="70" r="58" fill="#ffb03a" opacity=".2"/>
+            <rect x="60" y="140" width="34" height="85" fill="#3a2a1e"/>
+            <rect x="104" y="110" width="40" height="115" fill="#4d3826"/>
+            <rect x="154" y="156" width="30" height="69" fill="#3a2a1e"/>
+            <rect x="196" y="96" width="46" height="129" fill="#5e4530"/>
+            <rect x="252" y="132" width="38" height="93" fill="#42301f"/>
+            <rect x="300" y="112" width="42" height="113" fill="#4d3826"/>
+            <g fill="#ffb03a" opacity=".7">
+              <rect x="112" y="132" width="7" height="7"/><rect x="126" y="152" width="7" height="7"/>
+              <rect x="208" y="120" width="7" height="7"/><rect x="226" y="146" width="7" height="7"/>
+            </g>
+          </svg>
+          <span class="wy-topic-state wy-state-live">进行中</span>
+        </div>
+        <div class="wy-topic-body">
+          <h3>「城市一日」24 小时接力记录</h3>
+          <p>由一个城市扩展到十个城市，每位创作者负责一小时，拼接成一座城市的完整一天。</p>
+          <ul class="wy-topic-items">
+            <li>首批 5 城已完成接力，成片 3 部</li>
+            <li>第二轮开放报名，名额 40 位</li>
+            <li>成片统一进入官方精品内容库</li>
+          </ul>
+          <div class="wy-topic-foot"><span>更新至 11-20</span><span>参与城市 5</span></div>
+        </div>
+      </article>
+
+      <article class="wy-topic-card">
+        <div class="wy-topic-cover">
+          <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="225" fill="#191a24"/>
+            <circle cx="200" cy="112" r="86" fill="none" stroke="#ff4d3d" stroke-opacity=".35" stroke-width="2"/>
+            <circle cx="200" cy="112" r="56" fill="none" stroke="#ff4d3d" stroke-opacity=".5" stroke-width="2"/>
+            <circle cx="200" cy="112" r="26" fill="#ff4d3d" opacity=".7"/>
+            <g fill="#ffb03a" opacity=".8">
+              <circle cx="120" cy="60" r="4"/><circle cx="300" cy="72" r="3"/><circle cx="76" cy="170" r="3"/>
+              <circle cx="330" cy="168" r="4"/>
+            </g>
+            <path d="M200 26 L200 60 M200 168 L200 198 M110 112 L74 112 M290 112 L326 112" stroke="#43d9c0" stroke-width="1.5" opacity=".6"/>
+          </svg>
+          <span class="wy-topic-state wy-state-soon">预告</span>
+        </div>
+        <div class="wy-topic-body">
+          <h3>「真实性如何证明」圆桌访谈</h3>
+          <p>邀请创作者、媒体研究者与平台内容审核负责人，讨论现场影像的真实边界与责任。</p>
+          <ul class="wy-topic-items">
+            <li>圆桌实录将以完整长片形式发布</li>
+            <li>开放 20 个现场观众席位</li>
+            <li>同步整理文字版深度访谈稿</li>
+          </ul>
+          <div class="wy-topic-foot"><span>预计 12-06 上线</span><span>已预约 860</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S6 关键词解析长文 ===== -->
+<section class="wy-section" id="wy-analysis">
+  <div class="wy-container">
+    <div class="wy-analysis">
+      <div class="wy-analysis-head">
+        <div class="wy-sec-kicker">Insight / 深度解析</div>
+        <h2>为什么我们需要一个「轻量版」的现场视频社区</h2>
+        <p>五一爆料网轻量版不是一个缩小版的产品，而是一次关于“记录效率”的重新设计。以下从内容生态、创作者机制与社区治理三个角度，说明这个官方网站正在做什么。</p>
+      </div>
+      <div class="wy-analysis-cols">
+        <div class="wy-analysis-block">
+          <h3>一、关键词解析：轻量不等于信息稀薄</h3>
+          <p>“轻量版”这三个字，在五一爆料网轻量版的产品定义里有两层含义。第一层是<b>使用轻</b>：打开即拍、拍完即传、传完即可被看见，整个链路压缩到三步以内，弱网环境下也能完成基础投稿。第二层是<b>观看轻</b>：首页不做无限下拉的信息泥潭，而是用编辑推荐、专题聚合与城市入口，让观众在有限时间内看到更有信息密度的现场影像。</p>
+          <p>很多人对“轻量”有误解，以为意味着内容变少、审核变松、画质变低。事实相反。轻量版把资源集中在三件事上：<b>高清上传、正版溯源、创作留痕</b>。每一条进入官网推荐位的视频，都必须经过来源核验与画面完整度检查，剪辑点、拍摄时间与地理信息在后台留档，观众在前台看到的是干净的播放页，但信任建立在看不见的地方。</p>
+          <p>我们持续深耕休闲娱乐垂类，但这里的“休闲”不是无意义消遣，而是指大众在假期、周末与通勤间隙愿意花五分钟去看的真实内容。一个人排队、一条街换季、一场落雨，这些看似普通的画面之所以值得被记录，是因为它们构成了大多数人的共同经验。五一爆料网轻量版要做的，是把这些共同经验沉淀下来，形成可持续运营的内容生态。</p>
+        </div>
+        <div class="wy-analysis-block">
+          <h3>二、内容生态：让第一手记录有位置</h3>
+          <p>在传统视频平台上，现场内容往往要和娱乐化内容争夺同一个推荐位，结果是越极端越容易被看见，越平静越容易被淹没。五一爆料网轻量版采用“双轨分发”：一轨是数据驱动的热门流，按播放、完播与互动综合排序；另一轨是编辑策展的现场流，由官网编辑部按信息价值、记录完整度与公共相关性挑选，不看粉丝量，只看内容本身。</p>
+          <p>双轨并行的好处是明显的。新人创作者不必一上来就拼流量，只要记录扎实，就可能被编辑推荐；成熟创作者也不会因为一次数据波动就失去曝光。平台每季度公开一次策展说明，解释哪些内容被推荐、为什么被推荐，这种透明机制本身就是内容生态的一部分，也是我们敢于称自己为“值得信赖的现场视频社区”的底气。</p>
+          <p>与此同时，五一爆料网轻量版建立了<b>原创与正版</b>双重保护机制：上传即生成时间戳，转载自动携带来源标识，二次剪辑需获得授权。我们不鼓励为了流量而搬运，也不鼓励为了刺激而夸张。真实的现场已经足够有力量，不需要额外的表演。</p>
+        </div>
+        <div class="wy-analysis-block">
+          <h3>三、创作者机制：从随手拍到持续创作</h3>
+          <p>很多创作者的第一条视频是随手拍的，但能坚持到第一百条的很少。五一爆料网轻量版把创作者的成长路径拆成四段：<b>记录者、整理者、讲述者、策展者</b>。记录者只需要会拍；整理者开始学着给素材分类、加时间地点；讲述者能把零散画面组织成有起承转合的短片；策展者则能为他人提供选题与结构建议。</p>
+          <p>对应这四段，官网提供不同的工具与扶持：轻量剪辑模板、现场收音清单、分镜标记工具、专题策展席位。我们不承诺每个人都能成为头部，但承诺每一个认真记录的人都有一条看得见的进步路径。这也是我们在创作者社区里反复强调“陪伴”与“成长”的原因——平台的价值不在于制造爆款，而在于让持续创作这件事变得可行。</p>
+          <p>目前，五一爆料网轻量版已认证 43,600 余位创作者，其中超过三分之一保持着每月至少一条的更新频率。这个数字不算惊人，但足够稳定，而稳定正是内容生态最稀缺的品质。</p>
+        </div>
+        <div class="wy-analysis-block">
+          <h3>四、社区治理：真实需要制度支撑</h3>
+          <p>“真实”是五一爆料网轻量版最重要的关键词，也是最难维护的承诺。我们采取三层治理：<b>上传前提示、发布中核验、发布后追溯</b>。上传前，系统会提示创作者注意隐私与肖像权；发布中，来源信息不完整的视频进入人工复核；发布后，任何观众都可以对疑似失实内容发起反馈，编辑部在 48 小时内回应。</p>
+          <p>治理不是限制表达，而是保护表达。一个社区如果失去可信度，再多的流量也无法挽回。为此，官网定期发布内容治理月报，公开处理案例与改进措施，把“用户至上”从口号变成可被检查的动作。我们也坦率承认仍有不足，欢迎创作者与观众通过投稿入口或反馈通道提出意见，让这个平台在真实与克制中继续成长。</p>
+          <p>从更长的视角看，五一爆料网轻量版希望留下的不是一堆爆款标题，而是一份可被检索、可被引用的当代现场影像档案。它记录的是假期、街道、市场、车站与无数普通人的一天。这份档案的价值，会在时间里慢慢显现。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S5 创作者矩阵 ===== -->
+<section class="wy-section" id="wy-authors">
+  <div class="wy-container">
+    <div class="wy-sec-head">
+      <div class="wy-sec-head-left">
+        <div class="wy-sec-kicker">Creators / 创作者矩阵</div>
+        <h2>五一爆料网轻量版 <span class="wy-accent">认证创作者</span></h2>
+        <p class="wy-sec-desc">以下创作者长期在官网发布原创现场影像，覆盖城市记录、人物访谈、教程干货与治愈影像等方向。</p>
+      </div>
+      <a class="wy-sec-more" href="#wy-submit">申请认证 →</a>
+    </div>
+
+    <div class="wy-author-grid">
+      <article class="wy-author-card">
+        <div class="wy-avatar" style="background:linear-gradient(135deg,#ff4d3d,#ff8a3d)">林</div>
+        <div class="wy-author-info">
+          <h3>林岸观察 <span class="wy-author-role">城市记录</span></h3>
+          <div class="wy-author-field">擅长：城市探索 / 长镜头纪实</div>
+          <p>前报纸摄影记者，转型视频记录者六年。习惯用一个机位等一件事发生，最长一次在车站守了 19 个小时。相信画面自己会说话，剪辑只做减法。</p>
+          <div class="wy-author-nums"><span>作品 <b>286</b></span><span>粉丝 <b>18.4万</b></span></div>
+          <a class="wy-author-more" href="#wy-focus" data-wy-author="林岸观察">查看主页 →</a>
+        </div>
+      </article>
+
+      <article class="wy-author-card">
+        <div class="wy-avatar" style="background:linear-gradient(135deg,#43d9c0,#2a8f9e)">周</div>
+        <div class="wy-author-info">
+          <h3>老周不睡 <span class="wy-author-role">日常记录</span></h3>
+          <div class="wy-author-field">擅长：市井日常 / 现场收音</div>
+          <p>开了十二年夜班出租车，镜头常放在副驾。他拍的东西没有滤镜，声音也不修饰，但很多人说看完会想起自己生活的城市。更新频率不高，贵在从不摆拍。</p>
+          <div class="wy-author-nums"><span>作品 <b>142</b></span><span>粉丝 <b>12.1万</b></span></div>
+          <a class="wy-author-more" href="#wy-videos" data-wy-author="老周不睡">查看主页 →</a>
+        </div>
+      </article>
+
+      <article class="wy-author-card">
+        <div class="wy-avatar" style="background:linear-gradient(135deg,#ffb03a,#d05a28)">白</div>
+        <div class="wy-author-info">
+          <h3>白描工作室 <span class="wy-author-role">人物访谈</span></h3>
+          <div class="wy-author-field">擅长：人物访谈 / 创作幕后</div>
+          <p>三个人组成的小团队，负责提问、拍摄和收尾。访谈不追求金句，更在意停顿和犹豫的部分。他们坚持每期给出完整文字稿，方便读者核对原话。</p>
+          <div class="wy-author-nums"><span>作品 <b>98</b></span><span>粉丝 <b>9.6万</b></span></div>
+          <a class="wy-author-more" href="#wy-topics" data-wy-author="白描工作室">查看主页 →</a>
+        </div>
+      </article>
+
+      <article class="wy-author-card">
+        <div class="wy-avatar" style="background:linear-gradient(135deg,#7d8cff,#4a3fa8)">折</div>
+        <div class="wy-author-info">
+          <h3>慢速折叠 <span class="wy-author-role">治愈影像</span></h3>
+          <div class="wy-author-field">擅长：生活方式 / 环境声</div>
+          <p>喜欢拍没有发生的时刻：窗边的光、雨停之前、水烧开的几秒钟。视频大多只有环境声，字幕只标时间和地点。她说这是给注意力被打碎的人准备的内容。</p>
+          <div class="wy-author-nums"><span>作品 <b>176</b></span><span>粉丝 <b>8.8万</b></span></div>
+          <a class="wy-author-more" href="#wy-reviews" data-wy-author="慢速折叠">查看主页 →</a>
+        </div>
+      </article>
+
+      <article class="wy-author-card">
+        <div class="wy-avatar" style="background:linear-gradient(135deg,#5f6b82,#2b3345)">陈</div>
+        <div class="wy-author-info">
+          <h3>城南一号机 <span class="wy-author-role">在地文化</span></h3>
+          <div class="wy-author-field">擅长：连续记录 / 街巷变迁</div>
+          <p>在同一个街区生活了二十三年，拍了七年。他的素材库按街道和年份分类，像一本可以播放的地方志。最近在整理老街拆迁前的完整影像，计划做成长片。</p>
+          <div class="wy-author-nums"><span>作品 <b>210</b></span><span>粉丝 <b>7.4万</b></span></div>
+          <a class="wy-author-more" href="#wy-topics" data-wy-author="城南一号机">查看主页 →</a>
+        </div>
+      </article>
+
+      <article class="wy-author-card">
+        <div class="wy-avatar" style="background:linear-gradient(135deg,#e05a7a,#8a3a5c)">课</div>
+        <div class="wy-author-info">
+          <h3>五一爆料课堂 <span class="wy-author-role">官方账号</span></h3>
+          <div class="wy-author-field">擅长：教程干货 / 工具测评</div>
+          <p>官网编辑部运营的官方教学账号，专注把复杂的拍摄技巧拆成可执行的步骤。每期课程配套清单与练习作业，评论区会有编辑值班答疑，适合刚入门的创作者。</p>
+          <div class="wy-author-nums"><span>作品 <b>64</b></span><span>粉丝 <b>21.3万</b></span></div>
+          <a class="wy-author-more" href="#wy-faq" data-wy-author="五一爆料课堂">查看主页 →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S6 用户评价（评分摘要 + 双列短评） ===== -->
+<section class="wy-section" id="wy-reviews">
+  <div class="wy-container">
+    <div class="wy-sec-head">
+      <div class="wy-sec-head-left">
+        <div class="wy-sec-kicker">Reviews / 用户口碑</div>
+        <h2>他们在五一爆料网轻量版 <span class="wy-accent">留下了什么</span></h2>
+        <p class="wy-sec-desc">来自创作者与观众的真实评价，未经删改（仅隐去联系方式）。这些反馈也是官网持续改进的依据。</p>
+      </div>
+    </div>
+
+    <div class="wy-review-wrap">
+      <div class="wy-review-score">
+        <div class="wy-stars"><span>★★★★★</span></div>
+        <b>4.8<em> / 5.0</em></b>
+        <p>基于 12,486 条有效评价统计，涵盖播放体验、上传效率、内容质量与社区氛围四个维度。</p>
+        <div class="wy-score-bars">
+          <div class="wy-score-bar"><i>播放</i><u><s style="width:96%"></s></u><em style="font-style:normal">4.8</em></div>
+          <div class="wy-score-bar"><i>上传</i><u><s style="width:92%"></s></u><em style="font-style:normal">4.6</em></div>
+          <div class="wy-score-bar"><i>内容</i><u><s style="width:98%"></s></u><em style="font-style:normal">4.9</em></div>
+          <div class="wy-score-bar"><i>氛围</i><u><s style="width:94%"></s></u><em style="font-style:normal">4.7</em></div>
+        </div>
+      </div>
+
+      <div class="wy-review-grid">
+        <article class="wy-review-card">
+          <div class="wy-review-card-head">
+            <div class="wy-review-avatar" style="background:#ff4d3d">徐</div>
+            <b>徐一鸣</b><small>11-19</small>
+          </div>
+          <div class="wy-review-stars">★★★★★</div>
+          <p>我在这个网站上传了第一条视频，审核比我预想的认真，还收到了编辑的修改建议，不是模板回复。</p>
+        </article>
+        <article class="wy-review-card">
+          <div class="wy-review-card-head">
+            <div class="wy-review-avatar" style="background:#43d9c0">吴</div>
+            <b>吴小满</b><small>11-18</small>
+          </div>
+          <div class="wy-review-stars">★★★★★</div>
+          <p>画质是真的高，弱网下也能自动降档不掉线。最难得的是首页不会一刷全是同一种内容。</p>
+        </article>
+        <article class="wy-review-card">
+          <div class="wy-review-card-head">
+            <div class="wy-review-avatar" style="background:#ffb03a">何</div>
+            <b>何俊</b><small>11-17</small>
+          </div>
+          <div class="wy-review-stars">★★★★☆</div>
+          <p>整体很好，就是投稿表单偶尔加载慢一点。我提过一次，官方回复说已经在跟进，后来确实快了。</p>
+        </article>
+        <article class="wy-review-card">
+          <div class="wy-review-card-head">
+            <div class="wy-review-avatar" style="background:#7d8cff">沈</div>
+            <b>沈知微</b><small>11-16</small>
+          </div>
+          <div class="wy-review-stars">★★★★★</div>
+          <p>我最喜欢「城市一日」企划，看完会想去我所在的城市走一走。这种内容不太像平台做的，更像一群人一起完成的事。</p>
+        </article>
+        <article class="wy-review-card">
+          <div class="wy-review-card-head">
+            <div class="wy-review-avatar" style="background:#e05a7a">罗</div>
+            <b>罗嘉宁</b><small>11-15</small>
+          </div>
+          <div class="wy-review-stars">★★★★★</div>
+          <p>作为观众，我在这里看了三个月，没被推过一次明显剪辑过的假现场，这一点很难得。</p>
+        </article>
+        <article class="wy-review-card">
+          <div class="wy-review-card-head">
+            <div class="wy-review-avatar" style="background:#5f6b82">崔</div>
+            <b>崔大川</b><small>11-13</small>
+          </div>
+          <div class="wy-review-stars">★★★★☆</div>
+          <p>轻量版这个名字取得准。我以前上传一条要等很久，现在导出后直接传，剪辑标记也好用。希望以后能加多人协同。</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S7 企业动态 ===== -->
+<section class="wy-section" id="wy-news">
+  <div class="wy-container">
+    <div class="wy-sec-head">
+      <div class="wy-sec-head-left">
+        <div class="wy-sec-kicker">News / 企业动态</div>
+        <h2>五一爆料网轻量版 <span class="wy-accent">官方动态</span></h2>
+        <p class="wy-sec-desc">产品更新、规则调整与企划进度，均在官网第一时间发布，不通过第三方转述。</p>
+      </div>
+    </div>
+    <div class="wy-news-grid">
+      <article class="wy-news-card">
+        <div class="wy-news-date">2026 / 11 / 22</div>
+        <h3>轻量版客户端 3.2 上线：支持 4K 高清下载与分镜标记</h3>
+        <p>本次更新新增 4K 下载选项、素材分镜标记、投稿草稿自动保存三项能力，并优化了弱网环境下的续传稳定性。</p>
+      </article>
+      <article class="wy-news-card">
+        <div class="wy-news-date">2026 / 11 / 16</div>
+        <h3>内容治理月报（十月）：处理失实投稿 37 条</h3>
+        <p>十月共复核投稿 2,140 条，其中 37 条因来源不明或画面不完整未被推荐。完整处理说明已在官网帮助中心公示。</p>
+      </article>
+      <article class="wy-news-card">
+        <div class="wy-news-date">2026 / 11 / 08</div>
+        <h3>「城市一日」第二批开放报名，新增五座城市</h3>
+        <p>接力记录企划第二轮报名开启，新增五个城市席位，创作者可通过投稿入口提交样片与拍摄计划。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S7 合作与投稿 ===== -->
+<section class="wy-section" id="wy-submit">
+  <div class="wy-container">
+    <div class="wy-partner-submit">
+      <div class="wy-partner-card">
+        <h2>合作品牌与伙伴</h2>
+        <p>五一爆料网轻量版与多家机构、城市媒体与影像设备品牌保持长期合作，共同推动现场影像的规范化与公众认知。</p>
+        <div class="wy-partner-logos">
+          <div class="wy-partner-logo"><i style="background:#ff4d3d">城</i>城市影像档案馆</div>
+          <div class="wy-partner-logo"><i style="background:#43d9c0">镜</i>镜界设备实验室</div>
+          <div class="wy-partner-logo"><i style="background:#ffb03a">新</i>新纪实媒体联盟</div>
+          <div class="wy-partner-logo"><i style="background:#7d8cff">院</i>青年影像学院</div>
+        </div>
+      </div>
+      <div class="wy-submit-card">
+        <h2>投稿与反馈</h2>
+        <p>有现场素材、选题建议或产品反馈？填写以下信息，官网编辑部会在 3 个工作日内回复。</p>
+        <form class="wy-submit-form" id="wy-submit-form">
+          <input type="text" placeholder="你的昵称" aria-label="昵称" required>
+          <input type="text" placeholder="联系方式（邮箱或手机）" aria-label="联系方式" required>
+          <textarea placeholder="简单描述你的素材或建议，例如拍摄地点、时间与内容方向" aria-label="内容描述"></textarea>
+          <button class="wy-btn wy-btn-primary" type="submit">提交给编辑部</button>
+          <span class="wy-submit-note">提交即表示同意官网内容规范，原创素材将获得正版保护与署名展示。</span>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S7 FAQ ===== -->
+<section class="wy-section" id="wy-faq">
+  <div class="wy-container">
+    <div class="wy-sec-head">
+      <div class="wy-sec-head-left">
+        <div class="wy-sec-kicker">Help / 帮助中心</div>
+        <h2>关于五一爆料网轻量版的 <span class="wy-accent">常见问题</span></h2>
+      </div>
+    </div>
+    <div class="wy-faq-list">
+      <details>
+        <summary>五一爆料网轻量版和完整版有什么区别？</summary>
+        <p>轻量版聚焦上传、观看与策展三条核心链路，界面更简洁、加载更快，适合突发现场与移动端创作。完整版保留了更复杂的素材管理与团队协作能力，两者账号互通、内容同步。</p>
+      </details>
+      <details>
+        <summary>投稿的视频会被怎样审核？</summary>
+        <p>所有投稿先经自动检测完成格式与来源初筛，再进入人工复核。人工复核主要检查画面完整度、来源标注与隐私处理。通过后进入内容池，由数据与编辑双轨分发。未通过的稿件会说明原因，可修改后重新提交。</p>
+      </details>
+      <details>
+        <summary>如何证明我的视频是原创？</summary>
+        <p>上传即生成时间戳与内容指纹，作为原创依据留档。转载或二次剪辑需获得授权，页面会显示来源标识。如遇搬运，可通过反馈通道提交凭证，编辑部核实后处理。</p>
+      </details>
+      <details>
+        <summary>视频画质与下载有什么限制？</summary>
+        <p>普通观众可观看最高 1080P 高清版本，认证创作者可下载 4K 原片用于个人存档。所有下载均带署名水印，禁止用于商业用途，商业授权请通过合作通道联系。</p>
+      </details>
+      <details>
+        <summary>怎样申请创作者认证？</summary>
+        <p>在投稿入口提交至少三条原创作品与创作方向说明，编辑部会综合内容质量、更新稳定性与社区表现进行评估。认证后可使用专题策展、分成计划与优先审核等权益。</p>
+      </details>
+      <details>
+        <summary>发现失实内容如何反馈？</summary>
+        <p>每条视频播放页与列表页均提供反馈入口，选择“内容失实”并填写说明即可。编辑部承诺 48 小时内回应，处理结果会在内容治理月报中统一公示。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S8 页脚 ===== -->
+<footer class="wy-footer">
+  <div class="wy-container">
+    <div class="wy-footer-top">
+      <div class="wy-footer-brand">
+        <a class="wy-brand" href="#wy-hero">
+          <span class="wy-brand-mark">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" fill="#fff"/></svg>
+          </span>
+          <span class="wy-brand-text">
+            <b>五一爆料网轻量版</b>
+            <small>官网 · VIDEO COMMUNITY</small>
+          </span>
+        </a>
+        <p>五一爆料网轻量版官方网站，专注现场影像与真实记录的视频社区。我们坚持原创、正版、高清，持续运营高品质内容生态，为创作者与观众提供值得信赖的交流空间。</p>
+        <div class="wy-footer-social">
+          <span title="微信">微</span><span title="微博">博</span><span title="视频号">视</span><span title="邮箱">邮</span>
+        </div>
+      </div>
+      <div class="wy-footer-col">
+        <h4>内容入口</h4>
+        <a href="#wy-focus">焦点影像</a>
+        <a href="#wy-videos">热门视频</a>
+        <a href="#wy-topics">专题企划</a>
+        <a href="#wy-authors">创作者矩阵</a>
+      </div>
+      <div class="wy-footer-col">
+        <h4>关于我们</h4>
+        <a href="#wy-analysis">品牌故事</a>
+        <a href="#wy-news">企业动态</a>
+        <a href="#wy-reviews">用户口碑</a>
+        <a href="#wy-faq">帮助中心</a>
+      </div>
+      <div class="wy-footer-col">
+        <h4>参与共建</h4>
+        <a href="#wy-submit">投稿入口</a>
+        <a href="#wy-submit">合作联系</a>
+        <a href="#wy-faq">内容规范</a>
+        <a href="#wy-reviews">意见反馈</a>
+      </div>
+    </div>
+    <div class="wy-footer-bottom">
+      <span>© 2026 五一爆料网轻量版 版权所有 · 官方网站 · 持续运营中</span>
+      <span>备案号：演示备案 00000000 号 · 内容均经来源核验</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== 弹窗 / 提示 ===== -->
+<div class="wy-modal-mask" id="wy-modal-mask">
+  <div class="wy-modal" role="dialog" aria-modal="true">
+    <button class="wy-modal-close" id="wy-modal-close" aria-label="关闭">×</button>
+    <h3 id="wy-modal-title">提示</h3>
+    <p id="wy-modal-text"></p>
+    <div class="wy-modal-actions">
+      <button class="wy-btn wy-btn-ghost" id="wy-modal-cancel">取消</button>
+      <button class="wy-btn wy-btn-primary" id="wy-modal-ok">确定</button>
+    </div>
+  </div>
+</div>
+<div class="wy-toast" id="wy-toast"><i></i><span id="wy-toast-text">已复制</span></div>
+<button class="wy-backtop" id="wy-backtop" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ===== 1. 移动端导航折叠 ===== */
+  var navToggle = document.getElementById('wy-nav-toggle');
+  var nav = document.getElementById('wy-nav');
+  if(navToggle && nav){
+    navToggle.addEventListener('click', function(){
+      nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ nav.classList.remove('open'); });
+    });
+  }
+
+  /* ===== 2. 搜索框前端反馈 ===== */
+  var searchInput = document.getElementById('wy-search-input');
+  var searchFeedback = document.getElementById('wy-search-feedback');
+  var searchIndex = [
+    {k:'现场 纪实', v:'焦点影像：凌晨四点的城市出入口'},
+    {k:'城市 记录', v:'视频流：「城市一日」24 小时接力记录'},
+    {k:'教程 剪辑', v:'五一爆料课堂：突发场景的 5 个镜头语言'},
+    {k:'访谈 真实', v:'人物访谈：拍了 800 条现场视频之后'},
+    {k:'投稿 认证', v:'投稿入口：创作者认证与分成计划'},
+    {k:'规范 反馈', v:'帮助中心：失实内容反馈与治理月报'}
+  ];
+  if(searchInput && searchFeedback){
+    searchInput.addEventListener('input', function(){
+      var q = searchInput.value.trim();
+      if(!q){ searchFeedback.classList.remove('show'); searchFeedback.textContent=''; return; }
+      var hits = searchIndex.filter(function(item){
+        return item.k.indexOf(q) > -1 || item.v.indexOf(q) > -1;
+      });
+      searchFeedback.classList.add('show');
+      if(hits.length){
+        searchFeedback.textContent = '为你找到 ' + hits.length + ' 条相关入口：' + hits[0].v;
+      }else{
+        searchFeedback.textContent = '暂无完全匹配的「' + q + '」，试试「现场」「城市」「教程」等关键词。';
+      }
+    });
+  }
+
+  /* ===== 3. 点赞 +1 / 取消 ===== */
+  document.querySelectorAll('.wy-like-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var numEl = btn.querySelector('.wy-act-num');
+      var base = parseInt(btn.getAttribute('data-count'), 10);
+      var liked = btn.classList.toggle('wy-liked');
+      var cur = parseInt(numEl.textContent, 10);
+      if(isNaN(cur)) cur = base;
+      numEl.textContent = liked ? (cur + 1) : Math.max(base, cur - 1);
+      showToast(liked ? '已点赞，感谢支持' : '已取消点赞');
+    });
+  });
+
+  /* ===== 4. 收藏切换 ===== */
+  document.querySelectorAll('.wy-save-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var saved = btn.classList.toggle('wy-saved');
+      var label = btn.querySelector('span');
+      if(label) label.textContent = saved ? '已收藏' : '收藏';
+      showToast(saved ? '已加入收藏夹' : '已取消收藏');
+    });
+  });
+
+  /* ===== Toast ===== */
+  var toast = document.getElementById('wy-toast');
+  var toastText = document.getElementById('wy-toast-text');
+  var toastTimer = null;
+  function showToast(msg){
+    if(!toast || !toastText) return;
+    toastText.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2200);
+  }
+
+  /* ===== 5. 通用弹窗 ===== */
+  var mask = document.getElementById('wy-modal-mask');
+  var modalTitle = document.getElementById('wy-modal-title');
+  var modalText = document.getElementById('wy-modal-text');
+  var modalOk = document.getElementById('wy-modal-ok');
+  var modalCancel = document.getElementById('wy-modal-cancel');
+  var modalClose = document.getElementById('wy-modal-close');
+  var modalCallback = null;
+
+  function openModal(title, text, okText, cb){
+    if(!mask) return;
+    modalTitle.textContent = title;
+    modalText.textContent = text;
+    modalOk.textContent = okText || '确定';
+    modalCallback = cb || null;
+    mask.classList.add('show');
+  }
+  function closeModal(){ mask.classList.remove('show'); modalCallback = null; }
+  if(mask){
+    modalOk.addEventListener('click', function(){
+      var cb = modalCallback;
+      closeModal();
+      if(cb) cb();
+    });
+    modalCancel.addEventListener('click', closeModal);
+    modalClose.addEventListener('click', closeModal);
+    mask.addEventListener('click', function(e){ if(e.target === mask) closeModal(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && mask.classList.contains('show')) closeModal();
+    });
+  }
+
+  /* ===== 分享 / 复制链接 ===== */
+  function sharePage(){
+    var shareText = '五一爆料网轻量版 · 现场影像与真实记录视频社区';
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(shareText).then(function(){
+        showToast('社区信息已复制，可分享给朋友');
+      }).catch(function(){
+        openModal('分享社区', '分享内容：' + shareText + '。可复制这段文字发送给朋友。', '知道了');
+      });
+    }else{
+      openModal('分享社区', '分享内容：' + shareText + '。可复制这段文字发送给朋友。', '知道了');
+    }
+  }
+  var shareHero = document.getElementById('wy-share-hero');
+  if(shareHero) shareHero.addEventListener('click', sharePage);
+
+  /* ===== 上传作品 / 投稿弹窗 ===== */
+  var uploadBtn = document.getElementById('wy-upload-btn');
+  if(uploadBtn){
+    uploadBtn.addEventListener('click', function(){
+      openModal('上传作品', '请先在投稿表单填写基本信息，编辑部会在 3 个工作日内回复素材上传方式。原创素材将获得正版保护与署名展示。', '去填写', function(){
+        var target = document.getElementById('wy-submit');
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+  }
+
+  /* ===== 作者信息弹窗 ===== */
+  document.querySelectorAll('[data-wy-author]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var name = link.getAttribute('data-wy-author');
+      openModal(name, '这是 ' + name + ' 在五一爆料网轻量版的官方主页入口。你可以在视频流与专题企划中找到其全部公开作品，认证创作者信息均由编辑部核验。', '知道了');
+    });
+  });
+
+  /* ===== 投稿表单 ===== */
+  var submitForm = document.getElementById('wy-submit-form');
+  if(submitForm){
+    submitForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      openModal('提交成功', '感谢你的投稿与建议。编辑部将在 3 个工作日内通过你留下的联系方式回复，请留意消息。', '好的', function(){
+        submitForm.reset();
+        showToast('已提交给编辑部');
+      });
+    });
+  }
+
+  /* ===== 6. 数字滚动 ===== */
+  var counted = false;
+  function runCounters(){
+    if(counted) return;
+    var targets = document.querySelectorAll('[data-wy-count]');
+    if(!targets.length) return;
+    counted = true;
+    targets.forEach(function(el){
+      var end = parseInt(el.getAttribute('data-wy-count'), 10) || 0;
+      var suffix = el.getAttribute('data-wy-suffix') || '';
+      var em = el.querySelector('em');
+      var emHTML = em ? em.outerHTML : '';
+      var start = 0;
+      var dur = 1200;
+      var t0 = null;
+      function step(ts){
+        if(!t0) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var val = Math.floor(start + (end - start) * eased);
+        el.innerHTML = (val >= 10000 ? (val / 10000).toFixed(1) + '万' : val) + suffix + (emHTML || '');
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  var hero = document.getElementById('wy-hero');
+  if(hero){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting) runCounters(); });
+    }, {threshold:.3});
+    obs.observe(hero);
+    setTimeout(runCounters, 1400);
+  }
+
+  /* ===== 7. 回到顶部 ===== */
+  var backTop = document.getElementById('wy-backtop');
+  if(backTop){
+    window.addEventListener('scroll', function(){
+      if(window.scrollY > 520) backTop.classList.add('show');
+      else backTop.classList.remove('show');
+    }, {passive:true});
+    backTop.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  /* ===== 8. 锚点滚动偏移（预留吸顶高度） ===== */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(!id || id === '#') return;
+      var target = document.querySelector(id);
+      if(!target) return;
+      e.preventDefault();
+      var topWrap = document.querySelector('.wy-topwrap');
+      var offset = topWrap ? topWrap.getBoundingClientRect().height : 110;
+      var y = target.getBoundingClientRect().top + window.pageYOffset - offset - 14;
+      window.scrollTo({top: Math.max(y, 0), behavior:'smooth'});
+    });
+  });
+
+})();
+</script>
+</body>
+  </html>
